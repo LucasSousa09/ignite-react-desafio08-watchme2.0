@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Icon } from './Icon';
 
 import '../styles/button.scss';
@@ -9,7 +10,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   selected: boolean;
 }
 
-export function Button({ iconName, title, selected, ...rest }: ButtonProps) {
+function ButtonItem({ iconName, title, selected, ...rest }: ButtonProps) {
   return (
     <button type="button" {...(selected && { className: 'selected' })} {...rest}>
       <Icon name={iconName} color={selected ? '#FAE800' : '#FBFBFB'} />
@@ -17,3 +18,7 @@ export function Button({ iconName, title, selected, ...rest }: ButtonProps) {
     </button>
   );
 }
+
+export const Button = memo(ButtonItem, (prevProps, nextProps) => {
+  return prevProps.selected === nextProps.selected
+})
