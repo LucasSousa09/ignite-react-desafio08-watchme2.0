@@ -16,7 +16,7 @@ Otimizando uma aplicação.
 
 - Utilize o comando 'yarn' ou 'npm install' para instalar as dependencias
 - Utilize o comando 'yarn server' ou 'npm run server' para rodar o servidor
-- Utilize o comndo 'yarn dev' ou 'npm run dev' para rodar o frontend da aplicação
+- Utilize o comando 'yarn dev' ou 'npm run dev' para rodar o frontend da aplicação
 
 ## Tecnologias
 
