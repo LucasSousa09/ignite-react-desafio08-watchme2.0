@@ -9,7 +9,7 @@ Otimizando uma aplicação.
 
 ## Nota
 
-- React Query foi utilizado para lidar com o fetching de data da api
+- React Query foi utilizado para lidar com o fetching de dados da api
 - O tempo de reposta do json-server foi aumentado para simular loadings
 
 ## Rodando a aplicação
