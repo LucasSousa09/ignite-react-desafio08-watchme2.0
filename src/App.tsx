@@ -49,38 +49,39 @@ export function App() {
   // const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
   
 
-  async function getMoviesById(id:number): Promise<GetMoviesByIdProps>{
+  const getMoviesById = useCallback( async (id:number): Promise<GetMoviesByIdProps> => {
     const { data: movies } = await api.get<MovieProps[]>(`movies/?Genre_id=${id}`)
     const { data: genre} = await api.get<GenreResponseProps>(`genres/${id}`)
 
     return { movies, genre }
-  }
+  },[])
 
   const { data, isFetching } = useQuery(['moviesByGenre', selectedGenreId], () => getMoviesById(selectedGenreId), {staleTime: 1000 * 60 * 10})
 
-  async function handleHover(id:number){
-    await queryClient.prefetchQuery(['moviesByGenre', id], () =>  getMoviesById(id), {staleTime: 1000 * 60 * 10 })
-  }
-
+  
   useEffect(() => {
     api.get<GenreResponseProps[]>('genres').then(response => {
       setGenres(response.data);
     });
   }, []);
-
+  
   // useEffect(() => {
-  //   api.get<MovieProps[]>(`movies/?Genre_id=${selectedGenreId}`).then(response => {
-  //     setMovies(response.data);
-  //   });
+    //   api.get<MovieProps[]>(`movies/?Genre_id=${selectedGenreId}`).then(response => {
+      //     setMovies(response.data);
+      //   });
+      
+      //   api.get<GenreResponseProps>(`genres/${selectedGenreId}`).then(response => {
+        //     setSelectedGenre(response.data);
+        //   })
+        // }, [selectedGenreId]);
+        
+        const handleHover = useCallback(async (id:number) => {
+          await queryClient.prefetchQuery(['moviesByGenre', id], () =>  getMoviesById(id), {staleTime: 1000 * 60 * 10 })
+        },[])
 
-  //   api.get<GenreResponseProps>(`genres/${selectedGenreId}`).then(response => {
-  //     setSelectedGenre(response.data);
-  //   })
-  // }, [selectedGenreId]);
-
-  const handleClickButton = useCallback((id: number) => {
-    setSelectedGenreId(id);
-  },[])
+        const handleClickButton = useCallback((id: number) => {
+          setSelectedGenreId(id);
+        },[])
 
   return (
       <div style={{ display: 'flex', flexDirection: 'row' }}>
