@@ -1,4 +1,4 @@
-# watchme2.0 - Desafio 01 do Quinto módulo da trilha de React
+# watchme2.0 - Desafio 01 do 5º módulo da trilha de React do Ignite
 
 Otimizando uma aplicação.
 
@@ -28,6 +28,8 @@ Otimizando uma aplicação.
 
 ## Aquelas fotos da aplicação que não podem faltar
 
+- Aplicação 100%
 ![image](https://github.com/LucasSousa09/watchme2.0/blob/main/public/application.png)
 
+- Loading Skeleton 
 ![image](https://github.com/LucasSousa09/watchme2.0/blob/main/public/loading_data.png)
